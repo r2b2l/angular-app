@@ -1,0 +1,969 @@
+<div class="container">
+    <div class="accordion" id="accordionExample">
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                    aria-expanded="true" aria-controls="collapseOne">
+                    Angular Cheat Sheet
+                </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <div>
+                        <a href="https://angular.io/guide/cheatsheet">Cheat Sheet Angular officielle</a>
+                        <h2>Différences entre Component, Module et Service dans Angular</h2>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Concept</th>
+                                    <th>Description</th>
+                                    <th>Utilisation</th>
+                                </tr>
+                            </thead>
+                            <tbody class="table-group-divider"></tbody>
+                            <tr>
+                                <td><code>Component</code></td>
+                                <td>Responsable de l'affichage et du comportement d'une partie spécifique de l'interface
+                                    utilisateur.</td>
+                                <td>Construction d'interfaces réutilisables et modulaires.</td>
+                            </tr>
+                            <tr>
+                                <td><code>Module</code></td>
+                                <td>Un conteneur logique qui regroupe des composants, des directives, des pipes et des
+                                    services liés entre eux.</td>
+                                <td>Organisation et séparation logique du code en fonctionnalités.</td>
+                            </tr>
+                            <tr>
+                                <td><code>Service</code></td>
+                                <td>Fournit des fonctionnalités partagées et des services aux composants et autres
+                                    parties de l'application.</td>
+                                <td>Partage de données, gestion des états partagés, accès aux API externes, etc.</td>
+                            </tr>
+                        </table>
+                        <h2>Angular CLI</h2>
+                        The Angular CLI or the command line interface is a very powerful and sophisticated tool that
+                        enables you to
+                        perform
+                        a lot of tasks in an Angular project by utilizing simple commands. Everything is handled by the
+                        CLI. In order to
+                        scaffold a brand-new Angular project, for example, the CLI generates the application, compiles
+                        the application,
+                        and
+                        ships it to you for testing. The development server monitors the source code files for changes
+                        and when you
+                        change
+                        any of them, it automatically compiles the source code files and refreshes the app in the
+                        browser.
+                    </div>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <td>Command</td>
+                                <td>Meaning</td>
+                            </tr>
+                        </thead>
+                        <tbody class="table-group-divider">
+                            <tr>
+                                <td><code>npm install -g @angular/cli</code></td>
+                                <td>Installer le CLI d'Angular</td>
+                            </tr>
+                            <tr>
+                                <td><code>ng version</code></td>
+                                <td>Displays the information about the currently installed CLI.</td>
+                            </tr>
+                            <tr>
+                                <td><code>ng new {{'<'}}application name{{'>'}}</code></td>
+                                <td>Cette commande est utilisée pour créer un nouveau projet Angular. Elle crée un
+                                    nouveau répertoire avec le nom du projet spécifié et configure une structure de
+                                    projet Angular de base.</td>
+                            </tr>
+                            <tr>
+                                <td><code>ng add {{'<'}}package name{{'>'}}</code></td>
+                                <td>To use this command, you must first enable your package manager. Then, this command
+                                    will use your
+                                    package manager to download new dependencies and update your project with
+                                    configuration changes.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><code>ng generate {{'<'}}schematic{{'>'}} ou ng g {{'<'}}schematic{{'>'}} {{'<'}}name{{'>'}}</code>
+                                </td>
+                                <td>
+                                    Cette commande est utilisée pour générer différents artefacts Angular, tels que des
+                                    composants, des modules, des services, des directives, des pipes, etc. Le {{'
+                                    <'}}schematic{{'>'}} peut être l'un des mots-clés tels que component, module,
+                                        service, class, directive, pipe, etc.
+                                        Options:
+                                        <ul>
+                                            <li><code>ng g c MyComponent -d</code> This dry runs the code and helps in
+                                                cleaning the command line clean.</li>
+                                            <li><code>ng g c MyComponent --export</code> This exports the component</li>
+                                            <li><code>ng g c MyComponent -f</code> This is used to overwrite the
+                                                existing components. It forces rewriting.</li>
+                                            <li><code>ng g c --help</code> List of options for a given command is
+                                                displayed using this.</li>
+                                        </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><code>ng build</code></td>
+                                <td>Cette commande compile l'application Angular en créant des fichiers JavaScript et
+                                    les autres fichiers nécessaires dans le répertoire dist. Ces fichiers sont prêts à
+                                    être déployés sur un serveur.
+                                    <div class="alert alert-warning" role="alert">
+                                        ng build -prod Build pour la production en utilisant la compilation 'AOT'
+                                        Ahead-of-Time, qui permet de tout charger d'un coup, et non pas au fur et a
+                                        mesure du DOM (contraire du JOT en dev).
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><code>ng serve</code></td>
+                                <td>Cette commande démarre le serveur de développement. Elle compile le code de
+                                    l'application et lance un serveur local pour exécuter l'application dans le
+                                    navigateur. Par défaut, l'application sera accessible à l'adresse
+                                    http://localhost:4200/.
+                                    specified. A chaque modification de l'un des fichiers sources, l'application est
+                                    reconstruite et rechargée, la page est modifiée automatiquement.
+                                    <div class="alert alert-primary" role="alert">
+                                        Lance le serveur, en développement
+                                    </div>
+                                    Options:
+                                    <ul>
+                                        <li><code>ng serve -o</code> This command opens up the application in a browser
+                                            using any port 4200 or any
+                                            available port</li>
+                                        <li><code>ng serve -ssl</code> This command enables the application to be
+                                            accessed using SSL.</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><code>ng test</code></td>
+                                <td>Cette commande exécute les tests unitaires pour l'application à l'aide de l'outil de
+                                    test Karma. Elle permet de vérifier si les différentes parties de l'application
+                                    fonctionnent correctement.</td>
+                            </tr>
+                            <tr>
+                                <td><code>ng e2e</code></td>
+                                <td>Cette commande exécute les tests end-to-end (e2e) pour l'application à l'aide de
+                                    l'outil Protractor. Elle permet de tester le comportement de l'application à partir
+                                    du point de vue d'un utilisateur réel.</td>
+                            </tr>
+                            <tr>
+                                <td><code>ng update</code></td>
+                                <td>Cette commande est utilisée pour mettre à jour l'application et ses dépendances
+                                    Angular vers les dernières versions disponibles.</td>
+                            </tr>
+                            <tr>
+                                <td><code>ng lint my-app</code></td>
+                                <td>Cette commande vérifie le code source de l'application par rapport aux règles de
+                                    style définies dans le fichier de configuration tslint.json. Elle signale les
+                                    erreurs de style et les problèmes potentiels.
+                                    Options:
+                                    <ul>
+                                        <li><code>ng lint my-app --fix</code> This command will correct any form of
+                                            linting errors.</li>
+                                        <li><code>ng lint my-app --format</code> Stylish our entire codebase is
+                                            formatted using this command.</li>
+                                        <li><code>ng lint my-app --help</code> The list of linting commands is returned
+                                            by this command.</li>
+                                        <li></li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><code>ng help</code></td>
+                                <td>Cette commande affiche l'aide pour l'interface de ligne de commande Angular. Elle
+                                    fournit des informations sur toutes les commandes disponibles et leurs options.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div>
+                        <h2>Angular Lifecycle Hooks</h2>
+                        Angular apps are made up of pieces. There are pieces in an Angular app that are tree-structured,
+                        and pieces that
+                        consist of more pieces. An Angular app is made up of components, which is a tree of components.
+                        A component is a
+                        template, a typescript class, and a stylesheet file. Angular components have a lifecycle that is
+                        administered by
+                        Angular.
+
+                        The Angular lifecycle hooks provide fine-grained control of Angular by capturing different
+                        phases of birth to
+                        death.
+                        You can see how Angular phases change in certain portions of its lifecycle. Here's how you can
+                        control the
+                        phases of
+                        Angular using Angular lifecycle hooks.
+
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <td>Hook</td>
+                                    <td>Significance</td>
+                                </tr>
+                            </thead>
+                            <tbody class="table-group-divider">
+                                <tr>
+                                    <td>ngOnChanges()</td>
+                                    <td>Ce hook est appelé chaque fois que les propriétés liées aux entrées (@Input())
+                                        du composant changent. Il fournit un objet SimpleChanges qui contient les
+                                        propriétés modifiées et leurs anciennes et nouvelles valeurs.</td>
+                                </tr>
+                                <tr>
+                                    <td>ngOnInit()</td>
+                                    <td>Ce hook est appelé une seule fois, lorsque le composant est initialisé. C'est le
+                                        meilleur endroit pour initialiser les données, effectuer des appels de services
+                                        et effectuer d'autres tâches d'initialisation</td>
+                                </tr>
+                                <tr>
+                                    <td>ngOnDestroy()</td>
+                                    <td>Ce hook est appelé juste avant que le composant soit détruit. Il est utilisé
+                                        pour effectuer le nettoyage des ressources, tels que les abonnements aux
+                                        Observables ou les timers.</td>
+                                </tr>
+                                <tr>
+                                    <td>ngDoCheck()</td>
+                                    <td>Ce hook est appelé lors de chaque cycle de détection de changement. Il permet de
+                                        détecter et de réagir aux changements qui ne sont pas détectés automatiquement
+                                        par Angular.</td>
+                                </tr>
+                                <tr>
+                                    <td>ngAfterContentInit()</td>
+                                    <td>Ce hook est appelé après que le contenu projeté ({{'<'}}ng-content{{'>'}}) du
+                                            composant a été initialisé.</td>
+                                </tr>
+                                <tr>
+                                    <td>ngAfterContentChecked()</td>
+                                    <td>Ce hook est appelé après que le contenu projeté du composant a été vérifié par
+                                        la détection des changements.</td>
+                                </tr>
+                                <tr>
+                                    <td>ngAfterViewInit()</td>
+                                    <td>Ce hook est appelé après que la vue du composant (y compris les vues enfants) a
+                                        été initialisée.</td>
+                                </tr>
+                                <tr>
+                                    <td>ngAfterViewChecked()</td>
+                                    <td>Ce hook est appelé après que la vue du composant a été vérifiée par la détection
+                                        des changements.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="alert alert-warning" role="alert">
+                            Ces hooks peuvent être implémentés dans les composants en implémentant les interfaces
+                            correspondantes. Par exemple, pour utiliser ngOnInit(), vous devez implémenter l'interface
+                            OnInit.
+                        </div>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <td>Template Syntax</td>
+                                    <td>Details</td>
+                                </tr>
+                            </thead>
+                            <tbody class="table-group-divider">
+                                <tr>
+                                    <td>input [val]="name"> </td>
+                                    <td>Binds the “name” expression result to the property “val”</td>
+                                </tr>
+                                <tr>
+                                    <td>div [attr.role]="myAriaRole"> </td>
+                                    <td>An expression that binds an attribute role to a result of expression
+                                        “myAriaRole”.</td>
+                                </tr>
+                                <tr>
+                                    <td>div [class.extra]="isADelight"> </td>
+                                    <td>The truthiness of the expression isADelight binds to the CSS class extra</td>
+                                </tr>
+                                <tr>
+                                    <td>div [style.height.px]="myHeight"></td>
+                                    <td>The result of the expression myHeight binds to the style property height</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                        <h2>Décorateurs</h2>
+                        Les décorateurs en Angular sont des fonctions spéciales qui permettent de définir des
+                        métadonnées pour les classes, les propriétés, les méthodes, les paramètres de méthode, etc. Ils
+                        sont utilisés pour étendre ou configurer le comportement des différentes parties d'une
+                        application Angular. Les décorateurs sont largement utilisés dans Angular pour diverses tâches,
+                        telles que définir des composants, des modules, des services, des directives, des pipes, etc.
+                        Les décorateurs sont identifiés par le symbole @ suivi du nom du décorateur. Ils sont placés
+                        juste avant la déclaration de la classe, de la propriété ou de la méthode à laquelle ils
+                        s'appliquent.
+
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <td>Class Decorators</td>
+                                    <td>Details</td>
+                                </tr>
+                            </thead>
+                            <tbody class="table-group-divider">
+                                <tr>
+                                    <td>
+                                        <pre><code [highlight]="dec1" [languages]="['typescript']" [lineNumbers]="true"></code></pre>
+                                    </td>
+                                    <td>Le décorateur @NgModule() est utilisé pour définir un module Angular. Il prend
+                                        un objet de configuration en argument, qui spécifie les métadonnées du module,
+                                        telles que les déclarations, les imports, les exports, les fournisseurs, etc.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <pre><code [highlight]="dec2" [languages]="['typescript']" [lineNumbers]="true"></code></pre>
+                                    </td>
+                                    <td>Le décorateur @Component() est utilisé pour définir un composant Angular. Il
+                                        prend un objet de configuration en argument, qui spécifie les métadonnées du
+                                        composant, telles que le sélecteur, le template, le style, les entrées
+                                        (@Input()), les sorties (@Output()), etc.</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <pre><code [highlight]="dec3" [languages]="['typescript']" [lineNumbers]="true"></code></pre>
+                                    </td>
+                                    <td>Le décorateur @Directive() est utilisé pour définir une directive Angular
+                                        personnalisée. Les directives sont utilisées pour ajouter un comportement
+                                        personnalisé aux éléments DOM existants ou pour créer de nouveaux éléments DOM.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <pre><code [highlight]="dec4" [languages]="['typescript']" [lineNumbers]="true"></code></pre>
+                                    </td>
+                                    <td>Le décorateur @Pipe() est utilisé pour définir un pipe Angular personnalisé. Les
+                                        pipes sont utilisés pour transformer les données dans les templates, offrant
+                                        ainsi une façon pratique de formater et de manipuler les données à afficher.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <pre><code [highlight]="dec5" [languages]="['typescript']" [lineNumbers]="true"></code></pre>
+                                    </td>
+                                    <td>Le décorateur @Injectable() est utilisé pour marquer un service Angular. Il
+                                        permet à Angular de le gérer dans le système d'injection de dépendances. Les
+                                        services doivent être décorés avec @Injectable() pour pouvoir être injectés dans
+                                        d'autres composants ou services.</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <pre><code [highlight]="dec6" [languages]="['typescript']" [lineNumbers]="true"></code></pre>
+                                    </td>
+                                    <td>Import Inp from @angular/core.</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <pre><code [highlight]="dec7" [languages]="['typescript']" [lineNumbers]="true"></code></pre>
+                                    </td>
+                                    <td>Les décorateurs @Input() et @Output() sont utilisés pour définir les propriétés
+                                        d'entrée et de sortie des composants respectivement. Les propriétés marquées
+                                        avec @Input() peuvent recevoir des valeurs passées par le composant parent.
+                                        Utilisez le hook ngOnChanges pour réagir aux changements des propriétés d'entrée
+                                        (@Input). Cela vous permet de prendre des mesures spécifiques lorsque les
+                                        valeurs des propriétés changent.t
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <pre><code [highlight]="dec8" [languages]="['typescript']" [lineNumbers]="true"></code></pre>
+                                    </td>
+                                    <td>@Output() peuvent émettre des événements vers le composant parent. Nommer la
+                                        variable correspondant au changement en ajoutant le mot "Change" au nom de la
+                                        propriété. Par exemple, si vous avez une propriété d'entrée nommée "user",
+                                        nommez la propriété de sortie associée "userChange".</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <pre><code [highlight]="dec9" [languages]="['typescript']" [lineNumbers]="true"></code></pre>
+                                    </td>
+                                    <td>Host element property is binded to a component property</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <pre><code [highlight]="dec10" [languages]="['typescript']" [lineNumbers]="true"></code></pre>
+                                    </td>
+                                    <td>Le décorateur @HostListener() est utilisé pour écouter les événements DOM dans
+                                        une directive personnalisée. Il permet de lier une méthode de la directive à un
+                                        événement spécifique sur l'élément DOM./td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <pre><code [highlight]="dec11" [languages]="['typescript']" [lineNumbers]="true"></code></pre>
+                                    </td>
+                                    <td>First result of the query in the component content is binded to a property of
+                                        the class</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <pre><code [highlight]="dec12" [languages]="['typescript']" [lineNumbers]="true"></code></pre>
+                                    </td>
+                                    <td>Results of the query in the component content is binded to a property of the
+                                        class</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <pre><code [highlight]="dec13" [languages]="['typescript']" [lineNumbers]="true"></code></pre>
+                                    </td>
+                                    <td>First result of the query in the component view is binded to a property of the
+                                        class</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <pre><code [highlight]="dec14" [languages]="['typescript']" [lineNumbers]="true"></code></pre>
+                                    </td>
+                                    <td>Results of the query in the component view is binded to a property of the class
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                        <h2>Injection de dépendances</h2>
+                        L'injection de dépendances est un design pattern fondamental dans Angular qui permet de fournir
+                        des dépendances aux classes sans les créer directement. Plutôt que d'instancier manuellement les
+                        objets nécessaires, Angular s'occupe de créer et d'injecter automatiquement les dépendances dans
+                        les classes qui les demandent.
+
+                        L'injection de dépendances dans Angular se fait principalement via les constructeurs de classes,
+                        bien que d'autres approches soient également possibles. Voici comment cela fonctionne :
+
+                        <h3>Définir les dépendances</h3>
+                        Vous définissez les dépendances dont une classe a besoin en les spécifiant comme paramètres dans
+                        son constructeur. Par exemple, si vous avez besoin d'un service dans une classe, vous incluez ce
+                        service en tant que paramètre dans le constructeur de la classe.
+
+                        <h3>Fournir les dépendances</h3>
+                        Une fois que vous avez défini les dépendances, Angular doit savoir comment les fournir. Vous le
+                        faites enregistrant les services dans le "root injector" (injecteur racine) ou en les
+                        enregistrant au niveau d'un module.
+
+                        <h3>Injection automatique</h3>
+                        Lorsqu'Angular crée une instance d'une classe, il vérifie son constructeur et voit les
+                        dépendances nécessaires. Ensuite, il consulte le registre des fournisseurs pour savoir comment
+                        créer ces dépendances et les injecte automatiquement dans le constructeur.
+
+                        <pre><code [highlight]="dec18" [languages]="['typescript']" [lineNumbers]="true"></code></pre>
+                        Dans cet exemple, nous avons injecté le service MyService dans le constructeur du composant
+                        MyComponent. Angular s'occupe automatiquement de créer une instance de MyService et de
+                        l'injecter dans le constructeur du composant.
+
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <td>
+                                        DEPENDENCY INJECTION
+                                    </td>
+                                    <td>CONFIGURATION DETAILS</td>
+                                </tr>
+                            </thead>
+                            <tbody class="table-group-divider">
+                                <tr>
+                                    <td>
+                                        <pre><code [highlight]="dec16" [languages]="['typescript']" [lineNumbers]="true"></code></pre>
+                                    </td>
+                                    <td>InterviewBitService's provider is set or overridden to InterviewBitFactory
+                                        factory function</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <pre><code [highlight]="dec15" [languages]="['typescript']" [lineNumbers]="true"></code></pre>
+                                    </td>
+                                    <td>InterviewBitService's provider is set or overridden to InterviewBitMockService
+                                        class</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <pre><code [highlight]="dec17" [languages]="['typescript']" [lineNumbers]="true"></code></pre>
+                                    </td>
+                                    <td>InterviewBitValue's provider is set or overridden to the value 56</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                    <div>
+                        <h2>Angular Directives</h2>
+                        An element or component can be assigned an attribute directive or a structural directive to
+                        modify its
+                        behaviour. An
+                        attribute directive is an attribute that is associated with an element or component. A
+                        structural directive is a
+                        directive that modifies the structure of an element or component.
+
+                        <h3>Attribute Directives</h3>
+                        An element, component, or other directive can be decorated with an attribute directive.
+                        Angular exports the following attribute directives:
+
+
+
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <td>Directive</td>
+                                    <td>Details</td>
+                                    <td>Example</td>
+                                </tr>
+                            </thead>
+                            <tbody class="table-group-divider">
+                                <tr>
+                                    <td>NgClass</td>
+                                    <td>A CSS class can be added or removed via NgClass.</td>
+                                    <td>
+                                        <pre><code [highlight]="comp1" [languages]="['HTML']" [lineNumbers]="true"></code></pre>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>NgStyle</td>
+                                    <td>HTML styles can be added or removed via NgStyle..</td>
+                                    <td>
+                                        <pre><code [highlight]="comp2" [languages]="['HTML']" [lineNumbers]="true"></code></pre>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>NgModel</td>
+                                    <td>Two-way data binding to an HTML form element can be added via NgModel..</td>
+                                    <td>
+                                        <pre><code [highlight]="comp3" [languages]="['HTML']" [lineNumbers]="true"></code></pre>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+
+                        <h3>Structural Directives</h3>
+                        Elements that are added or removed from the DOM in Angular's structure are referred to as
+                        structural directives. Here are the most prevalent structural directives in Angular:
+
+
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <td>Directive</td>
+                                    <td>Details</td>
+                                </tr>
+                            </thead>
+                            <tbody class="table-group-divider">
+                                <tr>
+                                    <td>NgIf</td>
+                                    <td> The Angular conditional NgIf directive conditionalizes the value of NgIf. If
+                                        the NgIf
+                                        directive's
+                                        value is
+                                        false, Angular removes the element.</td>
+                                </tr>
+                                <tr>
+                                    <td>NgFor</td>
+                                    <td>The Angular NgFor directive loops through an array or list. It comes in
+                                        two types: The
+                                        ng-for
+                                        directive, which
+                                        loops through a ul> or ol> element; and the ng-for-each directive, which
+                                        iterates through a
+                                        collection.
+                                        <pre><code [highlight]="ngForEx" [languages]="['HTML']" [lineNumbers]="true"></code></pre>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>NgSwitch</td>
+                                    <td> NgSwitch is a structural directive, meaning that it should be assigned a
+                                        particular value
+                                        depending
+                                        on the
+                                        context in which it is used.</td>
+                                </tr>
+                                <tr>
+                                    <td>NgSwitchCase</td>
+                                    <td>A NgSwitchCase structure stores a matched value for NgSwitch, and it can also be
+                                        used to refer
+                                        to a
+                                        matched value.</td>
+                                </tr>
+                                <tr>
+                                    <td>NgSwitchDefault</td>
+                                    <td>When the expression does not match any of the specified values, NgSwitchDefault
+                                        performs the
+                                        function.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                        <h2>Pipes</h2>
+                        Templates typically use pipes to change content but it does not directly affect data. For
+                        example:
+
+
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <td>Pipe Details</td>
+                                    <td>Example</td>
+                                </tr>
+                            </thead>
+                            <tbody class="table-group-divider">
+                                <tr>
+                                    <td>DatePipe</td>
+                                    <td>Locale-specific date formatting is performed.</td>
+                                    <td>{{ date | date}}</td>
+                                </tr>
+                                <tr>
+                                    <td>UpperCasePipe </td>
+                                    <td>Given text is transformed into upper case text.</td>
+                                    <td>{{ text | uppercase }}</td>
+                                </tr>
+                                <tr>
+                                    <td>LowerCasePipe </td>
+                                    <td>Given text is transformed into lower case text.</td>
+                                    <td>{{ text | lowercase }}</td>
+                                </tr>
+                                <tr>
+                                    <td>CurrencyPipe</td>
+                                    <td>Given number is transformed into a currency string.</td>
+                                    <td>{{ 4.4324 | currency:'CAD' }}</td>
+                                </tr>
+                                <tr>
+                                    <td>DecimalPipe</td>
+                                    <td>Given number is transformed into a decimal point string.</td>
+                                    <td> {{ 1.1334354654 | number }}</td>
+                                </tr>
+                                <tr>
+                                    <td>PercentPipe</td>
+                                    <td>Given number is transformed into a percentage point string.</td>
+                                    <td>{{ 0.245 | percent }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                        <h2>RxJS</h2>
+                        <h3>Observable et Promises</h3>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <td>Promise</td>
+                                    <td>Observable</td>
+                                </tr>
+                            </thead>
+                            <tbody class="table-group-divider">
+                                <tr>
+                                    <td>Produit une seule valeur.</td>
+                                    <td>Produit un "stream" de valeurs (potentiellement infini).</td>
+                                </tr>
+                                <tr>
+                                    <td>Non annulable.</td>
+                                    <td>Annulable.</td>
+                                </tr>
+                                <tr>
+                                    <td>Traitement immédiat.</td>
+                                    <td>Lazy : le traitement n'est déclenché qu'à la première utilisation du résultat.
+                                        Utiliser la méthode subscribe()</td>
+                                </tr>
+                                <tr>
+                                    <td>Deux méthodes uniquement (then/catch).</td>
+                                    <td>Une centaine d'opérateurs de transformation natifs.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h4>Exemple Subscribe</h4>
+                        <pre><code [highlight]="subscribeEx" [languages]="['typescript']" [lineNumbers]="true"></code></pre>
+                        <h4>Fonction qui retourne un Observable</h4>
+                        <pre><code [highlight]="observableFunct" [languages]="['typescript']" [lineNumbers]="true"></code></pre>
+                        <h4>Fonction gestion d'erreur</h4>
+                        <pre><code [highlight]="handleError" [languages]="['typescript']" [lineNumbers]="true"></code></pre>
+                    </div>
+                    <div>
+                        <h2>Two-way data binding</h2>
+                        Le Two-way data binding (liaison de données bidirectionnelle) est un concept essentiel dans
+                        Angular qui permet de synchroniser automatiquement les données entre le modèle (component) et la
+                        vue (template). Cela signifie que lorsque les données changent dans le modèle, les changements
+                        sont automatiquement reflétés dans la vue, et vice versa, lorsque les données changent dans la
+                        vue, elles sont automatiquement mises à jour dans le modèle.
+
+                        Le Two-way data binding est généralement utilisé avec les propriétés [(ngModel)], qui combinent
+                        la liaison de propriétés et d'événements en une seule expression. Voici comment cela fonctionne
+                        :
+
+                        <h3>Dans le modèle (component)</h3>
+                        Vous déclarez une propriété dans le modèle du composant et l'initialisez avec une valeur. Cette
+                        propriété représente les données qui doivent être affichées dans la vue.
+
+                        <h3>Dans la vue (template)</h3>
+                        Vous utilisez la directive [(ngModel)] pour lier la propriété du modèle à un élément de
+                        formulaire dans la vue. Cela peut être un {{'<'}}input{{'>'}}, {{'<'}}select{{'>'}}, ou un autre
+                                élément qui prend en
+                                charge la liaison bidirectionnelle.
+
+                                <h3>Liaison bidirectionnelle</h3>
+                                Maintenant, lorsque l'utilisateur entre des données dans l'élément de formulaire lié,
+                                les
+                                modifications sont automatiquement mises à jour dans la propriété du modèle. De même,
+                                lorsque la propriété du modèle est modifiée dans le code du composant, les modifications
+                                sont automatiquement reflétées dans l'élément de formulaire lié dans la vue.
+
+                                Voici un exemple simple de Two-way data binding avec un {{'<'}}input{{'>'}} :
+                                    <pre><code [highlight]="twoWayBinding" [languages]="['typescript']" [lineNumbers]="true"></code></pre>
+                    </div>
+                    <div>
+                        <h2>Detection de changements</h2>
+                        La détection des changements (change detection) dans Angular est un mécanisme qui permet de
+                        suivre les modifications des données et de l'interface utilisateur dans l'application.
+                        Lorsqu'une donnée change dans l'application, Angular détecte automatiquement cette modification
+                        et met à jour l'interface utilisateur en conséquence.
+                        <br />
+                        <h3>Voici comment fonctionne la détection des changements dans Angular</h3>
+                        <br />
+                        <h4>Détection des changements initiée</h4>La détection des changements commence généralement
+                        lorsqu'un
+                        événement se produit dans l'application, tel qu'une interaction de l'utilisateur ou une requête
+                        asynchrone qui récupère de nouvelles données.
+                        <br />
+                        <h4>Vérification des propriétés</h4>Angular parcourt la hiérarchie du composant et vérifie
+                        toutes les
+                        propriétés (bindings) liées aux modèles (templates) des composants. Il compare la valeur
+                        actuelle des propriétés avec leur valeur précédente (capturée lors de la dernière détection des
+                        changements).
+                        <br />
+                        <h4>Mise à jour de l'interface utilisateur</h4>Si Angular détecte une différence entre les
+                        valeurs
+                        actuelle et précédente des propriétés, il met à jour l'interface utilisateur en reflétant les
+                        nouvelles valeurs. Cela peut inclure la mise à jour du texte affiché, des attributs HTML, des
+                        classes CSS, etc.
+                        <br />
+                        <h4>Récursivité</h4>Si une propriété change, Angular applique également le processus de
+                        détection des
+                        changements aux composants enfants (le cas échéant) et à leurs propriétés liées.
+                        <br />
+                        <br />
+                        <h4>Importer la stratégie OnPush</h4>Tout d'abord, importez la stratégie OnPush depuis
+                        @angular/core
+                        dans le fichier de votre composant.
+                        <pre><code [highlight]="cdRefEx1" [languages]="['typescript']" [lineNumbers]="true"></code></pre>
+                        <h4>Ajouter la stratégie OnPush à la décoration du composant</h4>Dans la décoration du
+                        composant,
+                        spécifiez la stratégie OnPush en utilisant changeDetection :
+                        <pre><code [highlight]="cdRefEx2" [languages]="['typescript']" [lineNumbers]="true"></code></pre>
+                        <h4>Utiliser correctement les Entrées (Inputs)</h4> Lorsque vous utilisez la stratégie OnPush,
+                        assurez-vous d'utiliser correctement les entrées de votre composant. Si vous modifiez les
+                        valeurs des entrées, Angular ne détectera pas automatiquement les changements. Vous devez créer
+                        une nouvelle référence à l'entrée modifiée pour que la détection des changements fonctionne
+                        correctement.
+                        <pre><code [highlight]="cdRefEx3" [languages]="['typescript']" [lineNumbers]="true"></code></pre>
+                        <h4>Utiliser les Observables avec le async pipe</h4>Lorsque vous utilisez des Observables dans
+                        vos
+                        templates, préférez utiliser le async pipe. Le async pipe gère automatiquement la désinscription
+                        des Observables lorsque le composant est détruit.
+                        <pre><code [highlight]="cdRefEx4" [languages]="['typescript']" [lineNumbers]="true"></code></pre>
+                        Avec la stratégie OnPush, Angular n'exécutera le mécanisme de détection des changements que
+                        lorsque l'une des entrées du composant change ou lorsque vous appelez manuellement
+                        detectChanges() à l'intérieur du composant. Cela peut améliorer considérablement les
+                        performances en évitant des cycles de détection de changements inutiles et en limitant les mises
+                        à jour du DOM.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    TypeScript Cheat Sheet
+                </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <h3>Types</h3>
+                    <ul>
+                        <li>String</li>
+                        <li>Number</li>
+                        <li>Boolean</li>
+                        <li>Array</li>
+                        <li>Any</li>
+                        <li>Object</li>
+                        <li>Tuple: Tableau avec types spécifiques: ex: [string, number]</li>
+                        <li>Enum: Enumération: ex: enum Couleurs {{'{'}} Rouge, Vert, Bleu {{'}'}}</li>
+                    </ul>
+                    <h3>Déclarer une variable</h3>
+                    <ul>
+                        <li><code>let</code> Variable de travail</li>
+                        <li><code>const</code> Constante</li>
+                    </ul>
+                    <h3>Typer une variable</h3>
+                    <ul>
+                        <li><code>let prenom: string = 'Erwan';</code></li>
+                        <li>
+                            <pre><code [highlight]="var1" [languages]="['HTML']" [lineNumbers]="true"></code></pre>
+                        </li>
+                        <li><code>let unGrandNombre: number = 12;</code></li>
+                        <li><code>let isUser: boolean = true;</code></li>
+                        <li><code>let list: number[] = [1, 2, 3];</code></li>
+                        <li>
+                            <pre><code [highlight]="var2" [languages]="['HTML']" [lineNumbers]="true"></code></pre>
+                        </li>
+                        <li><code>enum Color {{'{'}}
+                        Red,
+                        Green,
+                        Blue,
+                      {{'}'}}
+                      let c: Color = Color.Green;</code></li>
+                    </ul>
+                    <h3>Caster une variable</h3>
+                    <ul>
+                        <li><code>let someValue: unknown = "this is a string";
+ 
+                        let strLength: number = (someValue as string).length;</code></li>
+                        <li><code>let someValue: unknown = "this is a string";
+                            let strLength: number = ({{'<'}}string{{'>'}}someValue).length;</code></li>
+                    </ul>
+                    <h3>Classes</h3>
+                    <code>class NomClasse {{'{'}}
+                    propriete: type;
+                    constructor(param: type) {{'{'}}
+                    // Initialisation de la classe
+                    {{'}'}}
+                    methode(param: type): returnType {{'{'}}
+                    // Corps de la méthode
+                    {{'}'}}
+                    {{'}'}}</code>
+
+                    <h3>Fonctions utiles</h3>
+                    <ul>
+                        <li><code>Math.random()</code> Aléatoire entre 0 et 1, multiplier par 10, 100, ... Puis
+                            appliquer Floor</li>
+                        <li><code>Math.floor()</code> Arrondi le nombre</li>
+                        <li><a
+                                href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter">Array
+                                Filter</a> <code>array.filter((element) => condition)</code></li>
+                        <li><code>array.indexOf()</code> Retourne l'index si de la recherche, -1 si non trouvé</li>
+                        <li><code>array.map((x) => x * 2);</code> Applique du une fonction à tous les éléments du
+                            tableau. Ici, on multiplie chaque element par 2.</li>
+                        <li><code>array.pop()</code> Retirer le dernier element du tableau</li>
+                        <li><code>array.push()</code> Ajoute un element à la fin du tableau</li>
+                        <li><code>array.slice(begin[,end])</code> Extrait une partie du tableau</li>
+                        <li><code>array.shift()</code> Retirer et retourne le 1er element du tableau</li>
+                        <li><code>array.unshift</code> Ajoute un ou des elements au début du tableau</li>
+                        <li><code>  isEven(n) {{'{'}}
+                        return n % 2 == 0;
+                      {{'}'}}</code></li>
+                        <li><code>function nomFonction(param: type = defaultValue, param2?: type): returnType {{'{'}}
+                            // Corps de la fonction
+                            {{'}'}}</code></li>
+                    </ul>
+                    <h4>Fonction générique</h4>
+                    <code>
+                        function nomFonction{{'<'}}T{{'>'}}(param: T): T {{'{'}}
+                            // Corps de la fonction
+                        {{'}'}}
+                    </code>
+                    <h3>Traverser des objets / tableaux</h3>
+                    <ul>
+                        <li><code>for (i in array)</code> Traverser un tableau via son index <code>i</code></li>
+                        <li><code>for (const element of array1)</code> Traverser un tableau via l'element</li>
+                        <li><code>someArray.forEach((value, index) => {{'{'}}
+                        console.log(index); // 0, 1, 2
+                        console.log(value); // 9, 2, 5
+                    {{'}'}});</code> Traverse un tableau via le Callback</li>
+                        <li><code></code></li>
+                    </ul>
+                    <h3>Cheatsheet Maths</h3>
+                    <code>// Addition<br />
+const sum = 2 + 3;<br/>
+// Soustraction<br />
+const difference = 5 - 2;<br/>
+// Multiplication<br />
+const product = 4 * 6;<br/>
+// Division<br />
+const quotient = 10 / 2;<br/>
+// Modulo (reste de la division)<br />
+const remainder = 15 % 4;<br /><br />
+
+const decimalNumber = 3.14;<br /><br />
+// Arrondi vers le bas <br />
+const roundedDown = Math.floor(decimalNumber);<br /><br />
+
+// Arrondi vers le haut <br />
+const roundedUp = Math.ceil(decimalNumber);<br /><br />
+
+// Arrondi au nombre entier le plus proche <br />
+const rounded = Math.round(decimalNumber);<br /><br />
+
+// Obtenir le nombre le plus grand parmi plusieurs nombres<br />
+const maxNumber = Math.max(2, 8, 5);<br /><br />
+
+// Obtenir le nombre le plus petit parmi plusieurs nombres<br />
+const minNumber = Math.min(2, 8, 5);<br /><br />
+
+// Exponentiation<br />
+const power = Math.pow(2, 3); // 2 élevé à la puissance 3 = 8<br /><br />
+
+// Racine carrée<br />
+const squareRoot = Math.sqrt(16); // Racine carrée de 16 = 4<br /><br />
+
+// Générer un nombre aléatoire entre 0 (inclus) et 1 (exclus)<br />
+const random = Math.random();<br /><br />
+
+// Générer un nombre aléatoire entre min (inclus) et max (exclus)<br />
+const randomInRange = Math.random() * (max - min) + min;<br /><br />
+
+// Obtenir un nombre entier aléatoire entre min (inclus) et max (inclus)<br />
+const randomIntInRange = Math.floor(Math.random() * (max - min + 1)) + min;<br /><br />
+
+// Le nombre Pi (π)<br />
+const pi = Math.PI;<br /><br />
+
+// Le nombre d'Euler (e)<br />
+const euler = Math.E;<br /><br />
+</code>
+                    <h3>Cheatsheet Strings</h3>
+                    <code>
+                        // length: Renvoie la longueur de la chaîne.<br />
+                        const myString = "Hello, World!";<br />
+console.log(myString.length); // Output: 13<br /><br />
+
+// toUpperCase(): Convertit la chaîne en majuscules.<br />
+const myString = "hello";<br />
+console.log(myString.toUpperCase()); // Output: "HELLO"<br /><br />
+
+// toLowerCase(): Convertit la chaîne en minuscules.<br />
+const myString = "WORLD";<br />
+console.log(myString.toLowerCase()); // Output: "world"<br /><br />
+
+// charAt(index): Renvoie le caractère à l'index spécifié dans la chaîne.<br />
+const myString = "Hello";<br />
+console.log(myString.charAt(0)); // Output: "H"<br />
+console.log(myString.charAt(3)); // Output: "l"<br /><br />
+
+// substring(startIndex, endIndex): Renvoie une sous-chaîne de la chaîne, en fonction des index de début et de fin spécifiés.<br />
+const myString = "Hello, World!";<br />
+console.log(myString.substring(0, 5)); // Output: "Hello"<br />
+console.log(myString.substring(7));    // Output: "World!"<br /><br />
+
+// split(separator): Divise la chaîne en un tableau de sous-chaînes en utilisant le séparateur spécifié.<br />
+const myString = "apple,orange,banana";<br />
+const fruitsArray = myString.split(",");<br />
+console.log(fruitsArray); // Output: ["apple", "orange", "banana"]<br /><br />
+
+// indexOf(searchValue, fromIndex): Renvoie l'index de la première occurrence de la valeur recherchée dans la chaîne (ou -1 si non trouvée).<br />
+const myString = "Hello, World!";<br />
+console.log(myString.indexOf("W")); // Output: 7<br />
+console.log(myString.indexOf("z")); // Output: -1<br /><br />
+
+// replace(searchValue, newValue): Remplace les occurrences de la valeur recherchée par la nouvelle valeur.<br />
+const myString = "Hello, World!";<br />
+const newString = myString.replace("World", "Universe");<br />
+console.log(newString); // Output: "Hello, Universe!"<br /><br />
+
+// trim(): Supprime les espaces vides au début et à la fin de la chaîne<br />
+const myString = "   Hello, World!   ";<br />
+console.log(myString.trim()); // Output: "Hello, World!"<br /><br />
+
+                    </code>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>

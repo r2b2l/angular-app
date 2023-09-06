@@ -1,0 +1,7 @@
+<p>test-technique works!</p>
+<button (click)="showMessage()">Show</button>
+<div *ngIf="isShow">
+    <input [(ngModel)]="topupAmount">
+    <button (click)="addAmount()">Add</button>
+    <div *ngIf="account >0">{{account | currency:'CAD'}}</div>
+</div>
