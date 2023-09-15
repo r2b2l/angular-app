@@ -19,6 +19,7 @@ import { InMemoryDataService } from './in-memory-data.service';
 import { HighlightModule, HIGHLIGHT_OPTIONS, HighlightOptions } from 'ngx-highlightjs';
 import { AngularCheatSheetComponent } from './angular-cheat-sheet/angular-cheat-sheet.component';
 import { TestTechniqueComponent } from './test-technique/test-technique.component';
+import { MyClubComponent } from './sorare/my-club/my-club.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { TestTechniqueComponent } from './test-technique/test-technique.componen
     HeroesComponent,
     HeroDetailComponent,
     DashboardComponent,
-    TestTechniqueComponent
+    TestTechniqueComponent,
+    MyClubComponent
   ],
   imports: [
     BrowserModule,
@@ -41,9 +43,9 @@ import { TestTechniqueComponent } from './test-technique/test-technique.componen
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.
     // Remove it when a real server is ready to receive requests.
-    HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService, { dataEncapsulation: false }
-    )
+    // HttpClientInMemoryWebApiModule.forRoot(
+      // InMemoryDataService, { dataEncapsulation: false }
+    // )
   ],
   providers: [{
     provide: HIGHLIGHT_OPTIONS,

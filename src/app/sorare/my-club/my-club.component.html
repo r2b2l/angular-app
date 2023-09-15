@@ -1,0 +1,11 @@
+<div class="container">
+    <h2>My Sorare cards</h2>
+    <div class="row">
+        <div *ngFor="let card of this.cards" class="col-md-2">
+            <img class="img-thumbnail" src="{{card.pictureUrl}}" alt="{{card.slug}}" />
+            <div class="col-md-12">Obtenue le: {{card.ownerWithRates.from | date:'longDate'}}</div>
+            <div class="col-md-12">Prix: {{card.ownerWithRates.price / 1000000000000000000 }}</div>
+        </div>
+    </div>
+
+</div>
