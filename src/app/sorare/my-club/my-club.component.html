@@ -3,8 +3,14 @@
     <div class="row">
         <div *ngFor="let card of this.cards" class="col-md-2">
             <img class="img-thumbnail" src="{{card.pictureUrl}}" alt="{{card.slug}}" />
-            <div class="col-md-12">Obtenue le: {{card.ownerWithRates.from | date:'longDate'}}</div>
-            <div class="col-md-12">Prix: {{card.ownerWithRates.price / 1000000000000000000 }}</div>
+            <div class="col-md-12">
+                {{card.player.displayName}}
+                <span><i class="bi bi-arrow-up-right-square-fill"></i></span>
+            </div>
+            <div class="row">
+                <div class="col-md-6">{{card.ownerWithRates.from | date:'shortDate'}}</div>
+                <div *ngIf="card.ownerWithRates.price > 0" class="col-md-6">{{card.ownerWithRates.price | weiConvert }} Ξ</div>
+            </div>
         </div>
     </div>
 

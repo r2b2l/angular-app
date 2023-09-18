@@ -20,6 +20,7 @@ import { HighlightModule, HIGHLIGHT_OPTIONS, HighlightOptions } from 'ngx-highli
 import { AngularCheatSheetComponent } from './angular-cheat-sheet/angular-cheat-sheet.component';
 import { TestTechniqueComponent } from './test-technique/test-technique.component';
 import { MyClubComponent } from './sorare/my-club/my-club.component';
+import { WeiConvertPipe } from './pipes/wei-convert.pipe';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { MyClubComponent } from './sorare/my-club/my-club.component';
     HeroDetailComponent,
     DashboardComponent,
     TestTechniqueComponent,
-    MyClubComponent
+    MyClubComponent,
+    WeiConvertPipe
   ],
   imports: [
     BrowserModule,
