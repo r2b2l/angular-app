@@ -23,6 +23,7 @@ import { TestTechniqueComponent } from './test-technique/test-technique.componen
 import { MyClubComponent } from './sorare/my-club/my-club.component';
 import { WeiConvertPipe } from './pipes/wei-convert.pipe';
 
+
 @NgModule({
   declarations: [
     AppComponent,

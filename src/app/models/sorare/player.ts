@@ -1,9 +1,24 @@
-export class Player {
-    displayName: string;
-    slug: string;
+import { Country } from "./country";
 
-    constructor(displayName: string, slug: string) {
-        this.displayName = displayName;
+export class Player {
+    slug: string;
+    age: string;
+    country: Country;
+    displayName: string;
+    position: string;
+    pictureUrl: string;
+    lastFiveSo5Appearances: number;
+    lastFifteenSo5Appearances: number;
+
+    constructor(slug: string, age: string, country: Country, displayName: string, position: string, 
+        pictureUrl: string, lastFiveSo5Appearances: number, lastFifteenSo5Appearances: number) {
         this.slug = slug;
+        this.age = age;
+        this.country = country;
+        this.position = position;
+        this.displayName = displayName;
+        this.pictureUrl = pictureUrl;
+        this.lastFiveSo5Appearances = lastFiveSo5Appearances;
+        this.lastFifteenSo5Appearances = lastFifteenSo5Appearances;
     }
 }
