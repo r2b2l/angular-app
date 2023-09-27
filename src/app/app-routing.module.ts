@@ -8,13 +8,13 @@ import { TestTechniqueComponent } from './test-technique/test-technique.componen
 import { MyClubComponent } from './sorare/my-club/my-club.component';
 
 const routes: Routes = [
-  { path: 'heroes', component: HeroesComponent },
-  { path: 'dashboard', component: DashboardComponent },
+  // { path: 'heroes', component: HeroesComponent },
+  // { path: 'dashboard', component: DashboardComponent },
   { path: 'sorare/my-club', component: MyClubComponent },
   { path: 'angular-cheat-sheet', component: AngularCheatSheetComponent },
-  { path: 'test-technique', component: TestTechniqueComponent },
-  { path: 'detail/:id', component: HeroDetailComponent },
-  { path: '', component: DashboardComponent, pathMatch: 'full' }
+  // { path: 'test-technique', component: TestTechniqueComponent },
+  // { path: 'detail/:id', component: HeroDetailComponent },
+  { path: '', component: MyClubComponent, pathMatch: 'full' }
 ];
 
 @NgModule({

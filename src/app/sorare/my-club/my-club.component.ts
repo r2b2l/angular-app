@@ -1,13 +1,12 @@
 import { Component, OnInit, Inject, NgModule } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
-import {ProgressSpinnerMode, MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { ProgressSpinnerMode, MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ClubService } from '../club.service';
 import { Card } from 'src/app/models/sorare/card';
 import { Player } from 'src/app/models/sorare/player';
 import { PlayerService } from '../player.service';
 import { CommonModule } from '@angular/common';
-import { Football } from 'src/app/models/sorare/football';
 import { ThemePalette } from '@angular/material/core';
 
 @Component({
@@ -32,8 +31,8 @@ export class MyClubComponent implements OnInit {
 
   openPlayerInfos(player: Player): void {
     const dialogRef = this.dialog.open(PlayerInfosDialog, {
-      height: '400px',
-      width: '600px',
+      height: '420px',
+      width: '650px',
       data: {
         player: player
       },
@@ -74,13 +73,27 @@ export class PlayerInfosDialog implements OnInit {
     this.SO50Average = 0;
   }
 
+  /**
+   * ToDo: Modifier la classe css de l'image du joueur pour jouer sur le padding top
+   * Implementer AfterViewInit et @ViewChild de Angular Core
+   * const imageElement: HTMLImageElement = this.myImageElement.nativeElement;
+   *
+   * // Check if the image has loaded
+   * if (imageElement.complete) {
+   *   this.logImageHeight(imageElement);
+   * } else {
+   *   // If the image hasn't loaded yet, wait for the 'load' event
+   *   imageElement.onload = () => this.logImageHeight(imageElement);
+   * }
+   */
+
   ngOnInit(): void {
     // Call player details
     this.playerService.getPlayerDetails(this.player.slug).subscribe(
       data => {
         this.player = data.data.football.player;
         this.scoreNode = data.data.football.player.allSo5Scores.nodes;
-        
+
         // Calculate the average
         let scoresSum = 0;
         for (let i = 0; i < 5; i++) {
