@@ -15,6 +15,9 @@ import { ThemePalette } from '@angular/material/core';
   styleUrls: ['./my-club.component.scss']
 })
 
+/**
+ * Club Component
+ */
 export class MyClubComponent implements OnInit {
   cards: Card[] = [];
   constructor(private clubService: ClubService, public dialog: MatDialog) { }
@@ -23,12 +26,19 @@ export class MyClubComponent implements OnInit {
     this.getCards();
   }
 
+  /**
+   * Get my club cards
+   */
   getCards(): void {
     this.clubService.getMyClubCards().subscribe(
       cardsArray => this.cards = cardsArray
     );
   }
 
+  /**
+   * Open the Player information modal
+   * @param player 
+   */
   openPlayerInfos(player: Player): void {
     const dialogRef = this.dialog.open(PlayerInfosDialog, {
       height: '420px',
@@ -52,6 +62,9 @@ export class MyClubComponent implements OnInit {
   imports: [MatButtonModule, CommonModule, MatProgressSpinnerModule]
 })
 
+/**
+ * Player informations modal
+ */
 export class PlayerInfosDialog implements OnInit {
   player: Player;
   scoreNode: Array<any>;
@@ -94,7 +107,7 @@ export class PlayerInfosDialog implements OnInit {
         this.player = data.data.football.player;
         this.scoreNode = data.data.football.player.allSo5Scores.nodes;
 
-        // Calculate the average
+        // Calculate averages
         let scoresSum = 0;
         for (let i = 0; i < 5; i++) {
           scoresSum = scoresSum + this.scoreNode[i].score;

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Football } from '../models/sorare/football';
 
 @Injectable({
@@ -14,6 +14,11 @@ export class PlayerService {
 
   constructor(private http: HttpClient) { }
 
+  /**
+   * Get player informations by its slug
+   * @param slug 
+   * @returns Observable
+   */
   getPlayerDetails(slug: string): Observable<any> {
     const getUrl = this.apiUrl + '/sorare/player/slug/' + slug;
     return this.http.get<Football>(getUrl, this.httpOptions);

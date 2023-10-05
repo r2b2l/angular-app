@@ -16,6 +16,10 @@ export class ClubService {
   constructor(private http: HttpClient,
     private messageService: MessagesService) { }
 
+    /**
+     * Get stream of cards affiliated to my club
+     * @returns Observable
+     */
   getMyClubCards(): Observable<Card[]> {
     const getUrl = this.apiUrl + '/sorare/club/myClub/cards';
     return this.http.get<Card[]>(getUrl, this.httpOptions);
