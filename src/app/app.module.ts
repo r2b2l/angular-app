@@ -16,13 +16,15 @@ import { HighlightModule, HIGHLIGHT_OPTIONS, HighlightOptions } from 'ngx-highli
 import { AngularCheatSheetComponent } from './angular-cheat-sheet/angular-cheat-sheet.component';
 import { MyClubComponent } from './sorare/my-club/my-club.component';
 import { WeiConvertPipe } from './pipes/wei-convert.pipe';
+import { ClubComponent } from './sorare/club/club/club.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     MyClubComponent,
-    WeiConvertPipe
+    WeiConvertPipe,
+    ClubComponent
   ],
   imports: [
     BrowserModule,
