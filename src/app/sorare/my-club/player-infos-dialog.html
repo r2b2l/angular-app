@@ -3,9 +3,10 @@
         <div class="col-md-4">
             <h1 mat-dialog-title>{{player.displayName}}</h1>
         </div>
-        <div class="col-md-2">
-            <!-- <div>{{ player.activeClub.name }}</div> -->
-            <img class="img-fluid" src="{{ player.activeClub.pictureSecondaryUrl }}" alt="{{ player.activeClub.slug }}" />
+        <div class="col-md-2 z-1">
+            <a routerLink="sorare/club/{{ player.activeClub.slug }}" target="_blank">
+                <img class="img-fluid" src="{{ player.activeClub.pictureSecondaryUrl }}" alt="{{ player.activeClub.slug }}" />
+            </a>
         </div>
         <div class="col-md-6 overflow-hidden position-absolute start-50 pt-4">
             <img class="modal-header-img" src="{{ player.pictureUrl }}" alt="{{ player.slug }}" />

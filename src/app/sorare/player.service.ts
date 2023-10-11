@@ -23,4 +23,5 @@ export class PlayerService {
     const getUrl = this.apiUrl + '/sorare/player/slug/' + slug;
     return this.http.get<Football>(getUrl, this.httpOptions);
   }
+
 }

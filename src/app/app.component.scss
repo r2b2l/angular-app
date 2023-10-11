@@ -1,34 +1,43 @@
 /* Application-wide Styles */
+@import './assets/theme.scss';
+
+
+html, body { height: 100%; }
+
+body {
+    background-color: $lightGrey;
+    margin: 0; 
+    font-family: Roboto, "Helvetica Neue", sans-serif; 
+}
+
 h1 {
-    color: #369;
+    color: $indigo;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 250%;
 }
 
 h2,
 h3 {
-    color: #444;
+    color: $black;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: lighter;
 }
 
-body {
-    margin: 2em;
-}
+
 
 body,
 input[type="text"],
 button {
-    color: #333;
+    color: $black;
     font-family: Cambria, Georgia, serif;
 }
 
 button {
-    background-color: #eee;
+    background-color: $white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    color: black;
+    color: $black;
     font-size: 1.2rem;
     padding: 1rem;
     margin-right: 1rem;
@@ -37,14 +46,18 @@ button {
 }
 
 button:hover {
-    background-color: black;
-    color: white;
+    background-color: $black;
+    color: $white;
 }
 
 button:disabled {
-    background-color: #eee;
-    color: #aaa;
+    background-color: $white;
+    color: $lightGrey;
     cursor: auto;
+}
+
+i::before{
+    color: $black;
 }
 
 /* everywhere else */

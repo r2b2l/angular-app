@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -18,7 +19,6 @@ import { MyClubComponent } from './sorare/my-club/my-club.component';
 import { WeiConvertPipe } from './pipes/wei-convert.pipe';
 import { ClubComponent } from './sorare/club/club/club.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +30,7 @@ import { ClubComponent } from './sorare/club/club/club.component';
     BrowserModule,
     FormsModule,
     AppRoutingModule,
+    RouterModule,
     BrowserAnimationsModule,
     MatButtonModule,
     MatDialogModule,
@@ -41,17 +42,17 @@ import { ClubComponent } from './sorare/club/club/club.component';
     // and returns simulated server responses.
     // Remove it when a real server is ready to receive requests.
     // HttpClientInMemoryWebApiModule.forRoot(
-      // InMemoryDataService, { dataEncapsulation: false }
+    // InMemoryDataService, { dataEncapsulation: false }
     // )
   ],
   providers: [{
     provide: HIGHLIGHT_OPTIONS,
-    useValue:<HighlightOptions>{
-      lineNumbers:true,
-      coreLibraryLoader: ()=> import('ngx-highlightjs'),
+    useValue: <HighlightOptions>{
+      lineNumbers: true,
+      coreLibraryLoader: () => import('ngx-highlightjs'),
       // languages: {
-        // typecript: ()=> import('highlight.js/lib/languages/typecript'),
-        // css: ()=> import('highlight.js/lib/languages/css')
+      // typecript: ()=> import('highlight.js/lib/languages/typecript'),
+      // css: ()=> import('highlight.js/lib/languages/css')
       // }
     }
   }],

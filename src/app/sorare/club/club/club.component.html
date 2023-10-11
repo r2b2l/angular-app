@@ -1,1 +1,7 @@
-<p>club works!</p>
+<div *ngIf="club$ | async as club; else loading">
+    <div>{{ club.data.football.club.slug }}</div>
+    <button (click)="log(club)">Log</button>
+</div>
+<ng-template #loading>
+    Loading ...
+</ng-template>

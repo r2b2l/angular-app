@@ -1,4 +1,5 @@
-import { Component, OnInit, Inject, NgModule } from '@angular/core';
+import { Component, OnInit, OnDestroy, Inject, NgModule } from '@angular/core';
+import { Router, RouterModule } from '@angular/router';
 import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { ProgressSpinnerMode, MatProgressSpinnerModule } from '@angular/material/progress-spinner';
@@ -59,13 +60,13 @@ export class MyClubComponent implements OnInit {
   templateUrl: './player-infos-dialog.html',
   styleUrls: ['./my-club.component.scss'],
   standalone: true,
-  imports: [MatButtonModule, CommonModule, MatProgressSpinnerModule]
+  imports: [MatButtonModule, CommonModule, MatProgressSpinnerModule, RouterModule]
 })
 
 /**
  * Player informations modal
  */
-export class PlayerInfosDialog implements OnInit {
+export class PlayerInfosDialog implements OnInit, OnDestroy {
   player: Player;
   scoreNode: Array<any>;
   SO5Average: number;
@@ -73,6 +74,7 @@ export class PlayerInfosDialog implements OnInit {
   SO50Average: number;
   color: ThemePalette = "primary";
   spinnerMode: ProgressSpinnerMode = 'determinate';
+  subscription: any;
 
   constructor(
     public dialogRef: MatDialogRef<PlayerInfosDialog>,
@@ -102,7 +104,7 @@ export class PlayerInfosDialog implements OnInit {
 
   ngOnInit(): void {
     // Call player details
-    this.playerService.getPlayerDetails(this.player.slug).subscribe(
+    this.subscription = this.playerService.getPlayerDetails(this.player.slug).subscribe(
       data => {
         this.player = data.data.football.player;
         this.scoreNode = data.data.football.player.allSo5Scores.nodes;
@@ -123,7 +125,6 @@ export class PlayerInfosDialog implements OnInit {
         scoresSum = 0;
         for (let i = 0; i < 50; i++) {
           scoresSum = scoresSum + this.scoreNode[i].score;
-          console.log(scoresSum);
         }
         this.SO50Average = scoresSum / 50;
       }
@@ -132,5 +133,12 @@ export class PlayerInfosDialog implements OnInit {
 
   onNoClick(): void {
     this.dialogRef.close();
+  }
+
+  /**
+   * Call the unsubscribe to prevent memory leak since the modal is standalone
+   */
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }
