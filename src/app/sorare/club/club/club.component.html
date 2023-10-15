@@ -1,7 +1,35 @@
-<div *ngIf="club$ | async as club; else loading">
-    <div>{{ club.data.football.club.slug }}</div>
-    <button (click)="log(club)">Log</button>
+<div class="container">
+    <div *ngIf="club$ | async as club; else loading" class="row justify-content-between">
+        <mat-card class="col-md-5">
+            <mat-card-header>
+                <div mat-card-avatar class="header-image"></div>
+                <mat-card-title>{{ club.name }}</mat-card-title>
+                <mat-card-subtitle>{{ club.domesticLeague.displayName }}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                <div *ngIf="players$ | async as players">
+                    <!-- <button (click)="log(players)">Log</button> -->
+                    <i class="bi bi-person"></i>
+                    <div class="d-inline-block">{{ players.length }}</div>
+                    <div>{{ positionCounts.defenders }}</div>
+                </div>
+            </mat-card-content>
+        </mat-card>
+
+        <mat-card class="col-md-5">
+            <mat-card-header>
+                <div mat-card-avatar class="header-image"></div>
+                <mat-card-title>{{ club.domesticLeague.displayName }}</mat-card-title>
+                <mat-card-subtitle></mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content *ngFor="let competition of club.activeCompetitions">
+                <div>{{ competition.name }}</div>
+            </mat-card-content>
+        </mat-card>
+
+        <!-- <button (click)="log(club)">Log</button> -->
+    </div>
+    <ng-template #loading>
+        Loading ...
+    </ng-template>
 </div>
-<ng-template #loading>
-    Loading ...
-</ng-template>

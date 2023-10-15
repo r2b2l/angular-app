@@ -1,14 +1,16 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, map, of, tap } from 'rxjs';
 import { MessagesService } from '../messages.service';
 import { Card } from '../models/sorare/card';
 import { Player } from '../models/sorare/player';
 import { Club } from '../models/sorare/club';
+import { ClubStream } from '../models/sorare/club-stream';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class ClubService {
   private apiUrl = 'http://localhost:4200/api';
   httpOptions = {
@@ -23,7 +25,9 @@ export class ClubService {
    */
   getClubInformations(clubSlug: string): Observable<Club> {
     const getUrl = this.apiUrl + '/sorare/club/slug/' + clubSlug;
-    return this.http.get<Club>(getUrl, this.httpOptions);
+    return this.http.get<ClubStream>(getUrl, this.httpOptions).pipe(
+      map(data => data.data.football.club)
+    );
   }
 
   /**
@@ -40,7 +44,9 @@ export class ClubService {
    */
   getClubPlayers(clubSlug: string): Observable<Player[]> {
     const getUrl = this.apiUrl + '/sorare/club/' + clubSlug + '/players';
-    return this.http.get<Player[]>(getUrl, this.httpOptions);
+    return this.http.get<ClubStream>(getUrl, this.httpOptions).pipe(
+      map(data => data.data.football.club.activePlayers.nodes)
+    );
   }
 
   log(message: string): void {

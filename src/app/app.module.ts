@@ -6,6 +6,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { HttpClientModule } from '@angular/common/http';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatCardModule } from '@angular/material/card';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -34,6 +35,7 @@ import { ClubComponent } from './sorare/club/club/club.component';
     BrowserAnimationsModule,
     MatButtonModule,
     MatDialogModule,
+    MatCardModule,
     MatFormFieldModule,
     HttpClientModule,
     HighlightModule,
