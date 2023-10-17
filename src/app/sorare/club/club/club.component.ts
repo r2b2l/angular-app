@@ -1,16 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ClubService } from '../../club.service';
-import { Club } from 'src/app/models/sorare/club';
 import { Player } from 'src/app/models/sorare/player';
 import { Observable, of } from 'rxjs';
+import { LiveAnnouncer } from '@angular/cdk/a11y';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
 
 @Component({
   selector: 'app-club',
   templateUrl: './club.component.html',
   styleUrls: ['./club.component.scss']
 })
-export class ClubComponent implements OnInit {
+export class ClubComponent implements OnInit, AfterViewInit {
   slug: string;
   club$: Observable<any>;
   players$!: Observable<any>;
@@ -21,17 +23,26 @@ export class ClubComponent implements OnInit {
     midfielders: 0,
     forwards: 0
   };
+  displayedColumns: string[] = ['position', 'pictureUrl' , 'displayName', 'lastFiveSo5Appearances', 'lastFifteenSo5Appearances'];
+  playersSource = new MatTableDataSource<Player>([]);
 
 
-  constructor(private clubService: ClubService, private activatedroute: ActivatedRoute) {
+  constructor(private clubService: ClubService, private activatedroute: ActivatedRoute, private _liveAnnouncer: LiveAnnouncer) {
     this.slug = String(this.activatedroute.snapshot.paramMap.get("slug"));
     this.club$ = this.clubService.getClubInformations(this.slug);
     this.players$ = this.clubService.getClubPlayers(this.slug);
   }
 
+  @ViewChild(MatSort) sort: MatSort = new MatSort();
+
   ngOnInit(): void {
     this.players$.subscribe(
       nodes => {
+        // Filter nodes by position ASC
+        nodes.sort((a: any, b: any) => {
+          return a.position < b.position ? -1: 1;
+        });
+        this.playersSource = new MatTableDataSource<Player>(nodes);
         nodes.forEach((value: Player) => {
           switch (value.position.toUpperCase()) {
             case 'GOALKEEPER': {
@@ -61,6 +72,15 @@ export class ClubComponent implements OnInit {
         });
       }
     )
+  }
+
+  ngAfterViewInit() {
+    this.playersSource.sort = this.sort;
+  }
+
+  sortData() {
+    this.playersSource.sort = this.sort;
+    console.log(this.playersSource.sort);
   }
 
   log(a: any) {

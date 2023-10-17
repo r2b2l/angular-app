@@ -1,17 +1,18 @@
 @use '@angular/material' as mat;
 
 $app-primary: mat.define-palette(mat.$grey-palette);
-$app-accent: mat.define-palette(mat.$indigo-palette);
+$app-accent: mat.define-palette(mat.$teal-palette);
 $app-warn: mat.define-palette(mat.$red-palette);
 
 $white: #fff;
+$greyTeal: #7eb5b5;
 $black: mat.get-color-from-palette($app-primary, 900);
 $lightGrey: mat.get-color-from-palette($app-primary, 50);
 $grey: mat.get-color-from-palette($app-primary, 300);
 $darkGrey: mat.get-color-from-palette($app-primary, 700);
-$lightIndigo: mat.get-color-from-palette($app-accent, 200);
-$darkIndigo: mat.get-color-from-palette($app-accent, 800);
-$indigo: mat.get-color-from-palette($app-accent, 600);
+$lightTeal: mat.get-color-from-palette($app-accent, 200);
+$darkTeal: mat.get-color-from-palette($app-accent, 800);
+$teal: mat.get-color-from-palette($app-accent, 500);
 $red: mat.get-color-from-palette($app-warn, 500);
 $lightRed: mat.get-color-from-palette($app-warn, 300);
 $darkRed: mat.get-color-from-palette($app-warn, 800);

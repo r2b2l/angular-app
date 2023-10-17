@@ -7,6 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { HttpClientModule } from '@angular/common/http';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatCardModule } from '@angular/material/card';
+import {MatTableModule} from '@angular/material/table';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,6 +20,7 @@ import { AngularCheatSheetComponent } from './angular-cheat-sheet/angular-cheat-
 import { MyClubComponent } from './sorare/my-club/my-club.component';
 import { WeiConvertPipe } from './pipes/wei-convert.pipe';
 import { ClubComponent } from './sorare/club/club/club.component';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
   declarations: [
@@ -35,6 +37,8 @@ import { ClubComponent } from './sorare/club/club/club.component';
     BrowserAnimationsModule,
     MatButtonModule,
     MatDialogModule,
+    MatTableModule,
+    MatSortModule,
     MatCardModule,
     MatFormFieldModule,
     HttpClientModule,
