@@ -2,7 +2,7 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ClubService } from '../../club.service';
 import { Player } from 'src/app/models/sorare/player';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
