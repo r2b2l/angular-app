@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container modal-container">
     <div class="row position-relative overflow-hidden modal-header pt-3 pb-3">
         <div class="col-md-4">
             <h1 mat-dialog-title>
@@ -15,73 +15,108 @@
             <img class="modal-header-img" src="{{ player.pictureUrl }}" alt="{{ player.slug }}" />
         </div>
     </div>
-    <div class="row gy-1 px-2 justify-content-between" mat-dialog-content>
-        <!-- <div class="col-md-4"> -->
-        <!-- <img class="img-fluid" src="{{ player.pictureUrl }}" alt="{{ player.slug }}" /> -->
-        <!-- </div> -->
+    <div class="row gy-2 px-2 justify-content-between pt-2" mat-dialog-content>
+        <!-- Player section -->
         <mat-card class="col-md-6">
             <mat-card-header>
-                <!-- <div mat-card-avatar class="header-image" style="background-image: url({{ club.pictureUrl }})"></div> -->
-                <mat-card-title><i class="bi bi-person"></i>Joueur</mat-card-title>
-                <!-- <mat-card-subtitle>Age, ...</mat-card-subtitle> -->
+                <mat-card-title><i class="bi bi-person"></i> Joueur</mat-card-title>
             </mat-card-header>
             <mat-card-content>
-                <div class="col-md-4"><span>Age:</span>{{ player.age }}</div>
-                <div class="col-md-4"><span>Position:</span>{{ player.position }}</div>
-                <div class="col-md-4">
-                    <img class="img-fluid" src="{{ player.country.flagUrl }}" alt="{{ player.country.slug}}" />
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="col-md-12">
+                            <small>Age: </small><strong>{{ player.age }}</strong>
+                        </div>
+                        <div class="col-md-12">
+                            <small>Position: </small><strong>{{ player.position }}</strong>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <img class="img img-icon" src="{{ player.country.flagUrl }}" alt="{{ player.country.slug}}" />
+                    </div>
                 </div>
             </mat-card-content>
         </mat-card>
+        <!-- Club section -->
         <mat-card class="col-md-6">
             <mat-card-header>
-                <!-- <div mat-card-avatar class="header-image" style="background-image: url({{ club.pictureUrl }})"></div> -->
-                <mat-card-title><i class="bi bi-person"></i>Club</mat-card-title>
-                <!-- <mat-card-subtitle>Age, ...</mat-card-subtitle> -->
+                <mat-card-title><i class="bi bi-bookmark-star"></i> Club</mat-card-title>
             </mat-card-header>
             <mat-card-content>
-                {{ player.activeClub.name }}
-                <img class="img-fluid" src="{{ player.activeClub.country.flagUrl }}"
-                    alt="{{ player.activeClub.country.slug}}" />
+                <div class="row">
+                    <div class="col-md-8">
+                        <a class="no-decoration" routerLink="sorare/club/{{ player.activeClub.slug }}" target="_blank">
+                            <strong>{{ player.activeClub.name }}</strong>
+                        </a>
+                    </div>
+                    <div class="col-md-4">
+                        <img class="img img-icon" src="{{ player.activeClub.country.flagUrl }}"
+                            alt="{{ player.activeClub.country.slug}}" />
+                    </div>
+                </div>
             </mat-card-content>
         </mat-card>
-        <div class="col-md-12">
-            <div class="row gy-1">
-                <div class="col-md-3"></div>
-                <div class="col-md-3">
-                    <span class="spinner-label">{{ player.lastFiveSo5Appearances / 5 | percent }}</span>
-                    <mat-progress-spinner class="example-margin" [color]="color" [mode]="spinnerMode"
-                        [value]="(player.lastFiveSo5Appearances / 5) * 100  ">
-                    </mat-progress-spinner>
+        <!-- So appearances-->
+        <mat-card class="col-md-12 gy-2">
+            <mat-card-header>
+                <mat-card-title><i class="bi bi-box-arrow-in-right"></i> % Appearances</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-2">So5</div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-2">So15</div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-3"></div>
+                    </div>
+                    <div class="row gy-1">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-3">
+                            <span class="spinner-label">{{ player.lastFiveSo5Appearances / 5 | percent }}</span>
+                            <mat-progress-spinner class="example-margin" [color]="color" [mode]="spinnerMode"
+                                [value]="(player.lastFiveSo5Appearances / 5) * 100  ">
+                            </mat-progress-spinner>
+                        </div>
+                        <div class="col-md-3">
+                            <span class="spinner-label">{{ player.lastFifteenSo5Appearances / 15 | percent }}</span>
+                            <mat-progress-spinner class="example-margin" [color]="color" [mode]="spinnerMode"
+                                [value]="(player.lastFifteenSo5Appearances / 15) * 100  ">
+                            </mat-progress-spinner>
+                        </div>
+                        <div class="col-md-3"></div>
+                    </div>
                 </div>
-                <div class="col-md-3">
-                    <span class="spinner-label">{{ player.lastFifteenSo5Appearances / 15 | percent }}</span>
-                    <mat-progress-spinner class="example-margin" [color]="color" [mode]="spinnerMode"
-                        [value]="(player.lastFifteenSo5Appearances / 15) * 100  ">
-                    </mat-progress-spinner>
-                </div>
-                <div class="col-md-3"></div>
-            </div>
-            <div class="row gy-2">
-                <div class="col-md-12">Scorings</div>
-                <div class="row gy-2">
+            </mat-card-content>
+        </mat-card>
+        <!-- Scorings -->
+        <mat-card class="col-md-12">
+            <mat-card-header>
+                <mat-card-title><i class="bi bi-plus-slash-minus"></i> Scorings</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <div class="row pb-2">
                     <div class="col-md-3">So5</div>
                     <div class="col-md-9">
                         <div class="progress" role="progressbar" aria-label="SO5Average"
                             [attr.aria-valuenow]="SO5Average" aria-valuemin="0" aria-valuemax="100"
                             style="height: 20px">
-                            <div class="progress-bar" style="width: {{SO5Average}}%">{{ SO5Average | number: '2.1-2'
+                            <div class="progress-bar" style="width: {{SO5Average}}%">{{ SO5Average |
+                                number:
+                                '2.1-2'
                                 }}</div>
                         </div>
                     </div>
                 </div>
-                <div class="row gy-2">
+                <div class="row pb-2">
                     <div class="col-md-3">So15</div>
                     <div class="col-md-9">
                         <div class="progress" role="progressbar" aria-label="SO15Average"
                             [attr.aria-valuenow]="SO15Average" aria-valuemin="0" aria-valuemax="100"
                             style="height: 20px">
-                            <div class="progress-bar" style="width: {{SO15Average}}%">{{ SO15Average | number:
+                            <div class="progress-bar" style="width: {{SO15Average}}%">{{ SO15Average |
+                                number:
                                 '2.1-2'
                                 }}</div>
                         </div>
@@ -93,18 +128,14 @@
                         <div class="progress" role="progressbar" aria-label="SO50Average"
                             [attr.aria-valuenow]="SO50Average" aria-valuemin="0" aria-valuemax="100"
                             style="height: 20px">
-                            <div class="progress-bar" style="width: {{SO50Average}}%">{{ SO50Average | number:
+                            <div class="progress-bar" style="width: {{SO50Average}}%">{{ SO50Average |
+                                number:
                                 '2.1-2'
                                 }}</div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <!-- <div>{{ SO15Average | number: '2.1-2' }}</div> -->
-            <!-- <div>{{ SO50Average | number: '2.1-2' }}</div> -->
-        </div>
+            </mat-card-content>
+        </mat-card>
     </div>
-    <!-- <div mat-dialog-actions>
-            <button mat-raised-button (click)="onNoClick()">Close</button>
-        </div> -->
 </div>

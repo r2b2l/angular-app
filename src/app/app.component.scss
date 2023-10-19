@@ -71,6 +71,15 @@ i::before {
     color: $black;
 }
 
+img.img-icon {
+    height: 25px;
+}
+
+a.no-decoration {
+    color: inherit;
+    text-decoration: none;
+}
+
 /**
 * Mat Tables
 */
@@ -83,6 +92,13 @@ i::before {
             background-color: $lightGrey;
         }
     }
+}
+
+/**
+* Mat Modals
+*/
+.mat-mdc-dialog-surface {
+    background-color: $grey !important;
 }
 
 /* everywhere else */
