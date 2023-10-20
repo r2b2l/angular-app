@@ -10,3 +10,12 @@
     max-width: 35%;
     padding-top: 75px;
 }
+
+.cards-filter-row {
+    .mat-mdc-form-field {
+        display: block;
+    }
+    button {
+        margin-top: 0;
+    }
+}

@@ -4,6 +4,7 @@ import { ClubService } from '../club.service';
 import { Card } from 'src/app/models/sorare/card';
 import { Player } from 'src/app/models/sorare/player';
 import { PlayerInfosModalComponent } from '../player/player-infos-modal/player-infos-modal.component';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-my-club',
@@ -16,7 +17,18 @@ import { PlayerInfosModalComponent } from '../player/player-infos-modal/player-i
  */
 export class MyClubComponent implements OnInit {
   cards: Card[] = [];
-  constructor(private clubService: ClubService, public dialog: MatDialog) { }
+  filteredCards: Card[] = [];
+  rarityFilters: any[] = [
+    {value: 'init', viewValue: ''},
+    {value: 'common', viewValue: 'Common'},
+    {value: 'limited', viewValue: 'Limited'},
+    {value: 'rare', viewValue: 'Rare'},
+    {value: 'super-rare', viewValue: 'Super Rare'},
+    {value: 'unique', viewValue: 'Unique'},
+  ];
+
+  constructor(private clubService: ClubService, public dialog: MatDialog) {
+   }
 
   ngOnInit(): void {
     this.getCards();
@@ -27,8 +39,25 @@ export class MyClubComponent implements OnInit {
    */
   getCards(): void {
     this.clubService.getMyClubCards().subscribe(
-      cardsArray => this.cards = cardsArray
+      cardsArray => {
+        this.cards = cardsArray;
+        this.filteredCards = cardsArray;
+      }
     );
+  }
+
+  filterCardsByRarity(rarityFilter: string): void {
+    this.initCardsFilters();
+    if (rarityFilter === 'init') {
+      return;
+    }
+    this.filteredCards = this.filteredCards.filter(function(card) {
+      return card.rarity === rarityFilter.toLowerCase(); 
+    });
+  }
+
+  initCardsFilters(): void {
+    this.filteredCards = this.cards;
   }
 
   /**
