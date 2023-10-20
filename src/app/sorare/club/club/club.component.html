@@ -23,11 +23,69 @@
                 <mat-card-title>{{ club.domesticLeague.displayName }}</mat-card-title>
                 <mat-card-subtitle></mat-card-subtitle>
             </mat-card-header>
-            <mat-card-content *ngFor="let competition of club.activeCompetitions">
-                <div>{{ competition.name }}</div>
+            <mat-card-content>
+                <div *ngFor="let competition of club.activeCompetitions">{{ competition.name }}</div>
             </mat-card-content>
         </mat-card>
         <!-- <button (click)="log(club)">Log</button> -->
+        <mat-card class="col-md-5 mt-3">
+            <mat-card-header>
+                <div mat-card-avatar class="header-image"
+                    style="background-image: url({{ club.domesticLeague.logoUrl }})">
+                </div>
+                <mat-card-title>Transferts</mat-card-title>
+                <mat-card-subtitle>Derniers départs et arrivées</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-12">Départs</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-12">Arrivées</div>
+                        </div>
+                    </div>
+                </div>
+            </mat-card-content>
+        </mat-card>
+        <mat-card class="col-md-5 mt-3">
+            <mat-card-header>
+                <div mat-card-avatar class="header-image"
+                    style="background-image: url({{ club.domesticLeague.logoUrl }})"></div>
+                <mat-card-title>Matchs à venir</mat-card-title>
+                <mat-card-subtitle></mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                <div class="row">
+                    <div *ngFor="let upcomingGame of club.upcomingGames" class="col-md-6 mb-4">
+                        <strong>{{ upcomingGame.date | date:'longDate' }}</strong> - <small>{{
+                            upcomingGame.competition.displayName }}</small>
+                        <div *ngIf="upcomingGame.homeTeam.name === club.name">
+                            <i class="bi bi-house"></i>
+                            <a routerLink="/sorare/club/{{ upcomingGame.awayTeam.slug }}" class="no-decoration"
+                                target="_blank">
+                                {{ upcomingGame.awayTeam.name }}
+                                <img class="img-icon" src="{{ upcomingGame.awayTeam.pictureUrl }}"
+                                    alt="{{ upcomingGame.awayTeam.slug }}" />
+                            </a>
+                            <!-- <img class="img-icon" src="{{ upcomingGame.awayTeam.pictureUrl }}" alt="{{ upcomingGame.awayTeam.slug }}"/> -->
+                        </div>
+                        <div *ngIf="upcomingGame.awayTeam.name === club.name">
+                            <i class="bi bi-arrow-return-right"></i>
+                            <a routerLink="/sorare/club/{{ upcomingGame.homeTeam.slug }}" class="no-decoration"
+                                target="_blank">
+                                {{ upcomingGame.homeTeam.name }}
+                                <img class="img-icon" src="{{ upcomingGame.homeTeam.pictureUrl }}"
+                                    alt="{{ upcomingGame.homeTeam.slug }}" />
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </mat-card-content>
+        </mat-card>
     </div>
     <ng-template #clubCardsLoading>
         Loading ...
@@ -35,7 +93,7 @@
     <div *ngIf="players$ | async as players; else playersCardLoading" class="row mt-3 mb-3">
         <mat-card class="col-md-12">
             <mat-card-header>
-                <mat-card-title><i class="bi bi-person"></i>Players</mat-card-title>
+                <mat-card-title><i class="bi bi-person"></i> Players</mat-card-title>
             </mat-card-header>
             <mat-card-content>
                 <!-- <button (click)="log(playersSource)">Log</button> -->
@@ -52,7 +110,8 @@
                         <th mat-header-cell *matHeaderCellDef></th>
                         <td mat-cell *matCellDef="let player">
                             <!-- <img class="img" src="{{ player.pictureUrl }}" /> -->
-                            <div mat-card-avatar class="header-image matTable-image" style="background-image: url({{ player.pictureUrl }})"></div>
+                            <div mat-card-avatar class="header-image matTable-image"
+                                style="background-image: url({{ player.pictureUrl }})"></div>
                         </td>
                     </ng-container>
 

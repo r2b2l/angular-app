@@ -24,7 +24,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row" *ngIf="this.filteredCards !== []; else cardsLoading">
                     <div *ngFor="let card of this.filteredCards" class="col-md-2">
                         <img class="img-thumbnail" src="{{card.pictureUrl}}" alt="{{card.slug}}" />
                         <div class="col-md-12">
@@ -34,11 +34,15 @@
                         </div>
                         <div class="row">
                             <div class="col-md-6">{{card.ownerWithRates.from | date:'shortDate'}}</div>
-                            <div *ngIf="card.ownerWithRates.price > 0" class="col-md-6">{{card.ownerWithRates.price |
+                            <div *ngIf="card.ownerWithRates.price > 0" class="col-md-6">{{card.ownerWithRates.price
+                                |
                                 weiConvert }} Ξ</div>
                         </div>
                     </div>
                 </div>
+                <ng-template #cardsLoading>
+                    Loading ...
+                </ng-template>
             </mat-card-content>
         </mat-card>
     </div>
