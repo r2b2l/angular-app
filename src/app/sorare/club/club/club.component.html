@@ -121,6 +121,18 @@
                         <td mat-cell *matCellDef="let player"> {{ player.displayName }} </td>
                     </ng-container>
 
+                    <!-- Last 5 Average -->
+                    <ng-container matColumnDef="fiveSo5Average">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Score 5 last GW </th>
+                        <td mat-cell *matCellDef="let player"> {{ player.fiveSo5Average }} </td>
+                    </ng-container>
+
+                    <!-- Last 15 Average -->
+                    <ng-container matColumnDef="fifteenSo15Average">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Score 15 last GW </th>
+                        <td mat-cell *matCellDef="let player"> {{ player.fifteenSo15Average }} </td>
+                    </ng-container>
+
                     <!-- Last 5 Column -->
                     <ng-container matColumnDef="lastFiveSo5Appearances">
                         <th mat-header-cell *matHeaderCellDef mat-sort-header> % 5 last GW </th>
@@ -134,7 +146,7 @@
                     </ng-container>
 
                     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                    <tr mat-row (click)="openPlayerModal(row)" *matRowDef="let row; columns: displayedColumns;"></tr>
                 </table>
             </mat-card-content>
         </mat-card>

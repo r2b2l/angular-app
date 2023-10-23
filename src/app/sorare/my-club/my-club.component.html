@@ -28,9 +28,9 @@
                     <div *ngFor="let card of this.filteredCards" class="col-md-2">
                         <img class="img-thumbnail" src="{{card.pictureUrl}}" alt="{{card.slug}}" />
                         <div class="col-md-12">
-                            {{card.player.displayName}}
-                            <span (click)="openPlayerInfos(card.player)"><i
-                                    class="bi bi-arrow-up-right-square-fill"></i></span>
+                            <span class="modal-link" (click)="openPlayerInfos(card.player)">
+                                {{card.player.displayName}}
+                            </span>
                         </div>
                         <div class="row">
                             <div class="col-md-6">{{card.ownerWithRates.from | date:'shortDate'}}</div>

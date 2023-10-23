@@ -6,6 +6,8 @@ import { Observable } from 'rxjs';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
+import { PlayerInfosModalComponent } from '../../player/player-infos-modal/player-infos-modal.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-club',
@@ -23,11 +25,11 @@ export class ClubComponent implements OnInit, AfterViewInit {
     midfielders: 0,
     forwards: 0
   };
-  displayedColumns: string[] = ['position', 'pictureUrl' , 'displayName', 'lastFiveSo5Appearances', 'lastFifteenSo5Appearances'];
+  displayedColumns: string[] = ['position', 'pictureUrl' , 'displayName', 'fiveSo5Average', 'fifteenSo15Average', 'lastFiveSo5Appearances', 'lastFifteenSo5Appearances'];
   playersSource = new MatTableDataSource<Player>([]);
 
 
-  constructor(private clubService: ClubService, private activatedroute: ActivatedRoute, private _liveAnnouncer: LiveAnnouncer) {
+  constructor(private clubService: ClubService, private activatedroute: ActivatedRoute, public dialog: MatDialog) {
     this.slug = String(this.activatedroute.snapshot.paramMap.get("slug"));
     this.club$ = this.clubService.getClubInformations(this.slug);
     this.players$ = this.clubService.getClubPlayers(this.slug);
@@ -78,9 +80,30 @@ export class ClubComponent implements OnInit, AfterViewInit {
     this.playersSource.sort = this.sort;
   }
 
-  sortData() {
+  /**
+   * Sort the Player Table
+   */
+  sortData(): void {
     this.playersSource.sort = this.sort;
-    console.log(this.playersSource.sort);
+  }
+
+  /**
+   * Open Single player Modal
+   * @param row 
+   */
+  openPlayerModal(row: any) {
+    console.log(row); // row.slug
+    const dialogRef = this.dialog.open(PlayerInfosModalComponent, {
+      height: '600px',
+      width: '700px',
+      data: {
+        player: row
+      },
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
   }
 
   log(a: any) {
