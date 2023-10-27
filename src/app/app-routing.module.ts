@@ -8,6 +8,7 @@ const routes: Routes = [
   { path: 'sorare/my-club', component: MyClubComponent },
   { path: 'sorare/club/:slug', component: ClubComponent },
   { path: 'angular-cheat-sheet', component: AngularCheatSheetComponent },
+  { path: 'learning', loadChildren: () => import('./learning/learning.module').then(m => m.LearningModule)},
   { path: '', component: MyClubComponent, pathMatch: 'full' }
 ];
 

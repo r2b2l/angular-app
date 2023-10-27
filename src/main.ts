@@ -5,6 +5,7 @@ import { bootstrapApplication } from '@angular/platform-browser';
 import { AngularCheatSheetComponent } from './app/angular-cheat-sheet/angular-cheat-sheet.component';
 import { HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
 import { provideAnimations } from '@angular/platform-browser/animations';
+import { provideStore } from '@ngrx/store';
 
 
 platformBrowserDynamic().bootstrapModule(AppModule)
@@ -18,6 +19,7 @@ bootstrapApplication(AngularCheatSheetComponent, {
             fullLibraryLoader: () => import('highlight.js')
         }
     },
-    provideAnimations()
+    provideAnimations(),
+    provideStore()
 ]
 })
