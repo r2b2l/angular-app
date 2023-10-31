@@ -6,6 +6,8 @@ import { AngularCheatSheetComponent } from './app/angular-cheat-sheet/angular-ch
 import { HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideStore } from '@ngrx/store';
+import { provideStoreDevtools } from '@ngrx/store-devtools';
+import { isDevMode } from '@angular/core';
 
 
 platformBrowserDynamic().bootstrapModule(AppModule)
@@ -20,6 +22,7 @@ bootstrapApplication(AngularCheatSheetComponent, {
         }
     },
     provideAnimations(),
-    provideStore()
+    provideStore(),
+    provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() })
 ]
 })
