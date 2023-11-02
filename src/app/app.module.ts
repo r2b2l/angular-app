@@ -1,15 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormControl, FormsModule } from '@angular/forms'; // <-- NgModel lives here
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // <-- NgModel lives here
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSelectModule } from '@angular/material/select';
+import { MatIconModule } from '@angular/material/icon';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -28,6 +30,7 @@ import { ErrorComponentComponent } from './error-component/error-component.compo
 import { ErrorInterceptor } from './services/error-interceptor.service';
 import { booksReducer } from './state/books.reducer';
 import { collectionReducer } from './state/collection.reducer';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -35,23 +38,27 @@ import { collectionReducer } from './state/collection.reducer';
     MyClubComponent,
     WeiConvertPipe,
     ClubComponent,
-    ErrorComponentComponent
+    ErrorComponentComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     RouterModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     MatButtonModule,
     MatDialogModule,
     MatTableModule,
     MatSortModule,
     MatCardModule,
+    MatInputModule,
     MatFormFieldModule,
     MatSelectModule,
     MatSnackBarModule,
-    HttpClientModule,
+    MatIconModule,
     HighlightModule,
     StoreModule.forRoot({ apiErrors: apiErrorsReducer, books: booksReducer, collection: collectionReducer }),
     AngularCheatSheetComponent,
@@ -78,16 +85,16 @@ import { collectionReducer } from './state/collection.reducer';
       multi: true
     },
     {
-    provide: HIGHLIGHT_OPTIONS,
-    useValue: <HighlightOptions>{
-      lineNumbers: true,
-      coreLibraryLoader: () => import('ngx-highlightjs'),
-      // languages: {
-      // typecript: ()=> import('highlight.js/lib/languages/typecript'),
-      // css: ()=> import('highlight.js/lib/languages/css')
-      // }
-    }
-  }],
+      provide: HIGHLIGHT_OPTIONS,
+      useValue: <HighlightOptions>{
+        lineNumbers: true,
+        coreLibraryLoader: () => import('ngx-highlightjs'),
+        // languages: {
+        // typecript: ()=> import('highlight.js/lib/languages/typecript'),
+        // css: ()=> import('highlight.js/lib/languages/css')
+        // }
+      }
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
