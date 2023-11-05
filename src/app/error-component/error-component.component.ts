@@ -22,7 +22,6 @@ export class ErrorComponentComponent implements OnInit {
   }
 
   clearError(error: HttpError): void {
-    console.log(error);
     this.store.dispatch(ApiErrorActions.removeError(error));
   }
 

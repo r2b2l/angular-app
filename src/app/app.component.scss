@@ -101,6 +101,25 @@ a.no-decoration {
     background-color: $grey !important;
 }
 
+/* Force mat icons to use its own font family */
+mat-icon {
+    font-family: 'Material Icons';
+}
+
+/**
+* Navbar
+*/ 
+nav.navbar {
+    button#login-button {
+        margin: 0;
+        width: auto;
+        small {
+            vertical-align: top;
+            padding-right: 5px;
+        }
+    }
+}
+
 /* everywhere else */
 * {
     font-family: Arial, Helvetica, sans-serif;

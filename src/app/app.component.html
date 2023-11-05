@@ -7,13 +7,26 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <!-- <li class="nav-item"><a routerLink="/dashboard" class="nav-link active">Dashboard</a></li> -->
-                <li class="nav-item"><a routerLink="/login" class="nav-link active">Login</a></li>
+                <!-- <li class="nav-item"><a routerLink="/login" class="nav-link active">Login</a></li> -->
                 <li class="nav-item"><a routerLink="/angular-cheat-sheet" class="nav-link active">Angular Cheat Sheet</a></li>
                 <!-- <li class="nav-item"><a routerLink="/test-technique" class="nav-link active">Test technique</a></li> -->
                 <!-- <li class="nav-item"><a routerLink="/heroes" class="nav-link active">Heroes</a></li> -->
                 <li class="nav-item"><a routerLink="/sorare/my-club" class="nav-link active">Sorare Club</a></li>
                 <li class="nav-item"><a routerLink="/learning" class="nav-link active">Learning</a></li>
             </ul>
+            <ng-container *ngIf="isAuthenticated()">
+                <button mat-icon-button id="login-button" (click)="logout()">
+                    <small>Log out</small>
+                    <mat-icon aria-hidden="false" aria-label="logout" fontIcon="logout"></mat-icon>
+                </button>
+            </ng-container>
+            <ng-container *ngIf="!isAuthenticated()">
+                <!-- <small>Connecté</small> -->
+                <button mat-icon-button id="login-button" routerLink="/login">
+                    <small>Login</small>
+                    <mat-icon aria-hidden="false" aria-label="login" fontIcon="login"></mat-icon>
+                </button>
+            </ng-container>
         </div>
     </div>
 </nav>

@@ -15,7 +15,6 @@ export const apiErrorsReducer = createReducer(
         return [..._state, httpError]
     }),
     on(ApiErrorActions.removeError, (_state, httpError) => {
-        console.log('Hi');
         return _state.filter((error) => error.id !== httpError.id);
     })
 )
