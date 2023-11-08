@@ -1,34 +1,36 @@
 <div class="container">
     <div class="row justify-content-md-center">
         <div class="col-md-6">
-                <mat-card>
-        <mat-card-header>
-            <mat-card-title>Se connecter</mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-            <form (ngSubmit)="onSubmit()">
-                <div class="row">
-                    <mat-form-field class="col-md-12">
-                        <mat-label>Mail</mat-label>
-                        <input matInput [(ngModel)]="user.mail" placeholder="user@mail.com" [formControl]="mailFC"
-                            id="mail" name="mail" required>
-                        <mat-error *ngIf="mailFC.invalid">{{ getMailErrorMessage() }}</mat-error>
-                    </mat-form-field>
-                    <mat-form-field class="col-md-12">
-                        <mat-label>Mot de passe</mat-label>
-                        <input matInput [(ngModel)]="user.password" [formControl]="passwordFC"
-                            [type]="hidePassword ? 'password' : 'text'" name="password" (blur)="encryptPassword()" required>
-                        <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword" class="hide-icon-button"
-                            [attr.aria-label]="'Cacher mot de passe'">
-                            <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
-                        </button>
-                        <mat-error *ngIf="passwordFC.invalid">{{ getPasswordErrorMessage() }}</mat-error>
-                    </mat-form-field>
-                    <button type="submit">Se connecter</button>
-                </div>
-            </form>
-        </mat-card-content>
-    </mat-card>
+            <mat-card>
+                <mat-card-header>
+                    <mat-card-title>Se connecter</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <form (ngSubmit)="onSubmit()">
+                        <div class="row">
+                            <mat-form-field class="col-md-12">
+                                <mat-label>Mail</mat-label>
+                                <input matInput [(ngModel)]="user.mail" placeholder="user@mail.com"
+                                    [formControl]="mailFC" id="mail" name="mail" required>
+                                <mat-error *ngIf="mailFC.invalid">{{ getMailErrorMessage() }}</mat-error>
+                            </mat-form-field>
+                            <mat-form-field class="col-md-12">
+                                <mat-label>Mot de passe</mat-label>
+                                <input matInput [(ngModel)]="user.password" [formControl]="passwordFC"
+                                    [type]="hidePassword ? 'password' : 'text'" name="password"
+                                    (blur)="encryptPassword()" required>
+                                <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword"
+                                    class="hide-icon-button" [attr.aria-label]="'Cacher mot de passe'">
+                                    <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+                                </button>
+                                <mat-error *ngIf="passwordFC.invalid">{{ getPasswordErrorMessage() }}</mat-error>
+                            </mat-form-field>
+                            <button type="submit" [disabled]="!loginForm.valid">Se connecter</button>
+                        </div>
+                    </form>
+                </mat-card-content>
+            </mat-card>
+            <app-reset-password *ngIf="mailFC.valid" [mail]=user.mail></app-reset-password>
         </div>
     </div>
 </div>

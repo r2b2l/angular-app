@@ -62,8 +62,8 @@ button:hover {
 }
 
 button:disabled {
-    background-color: $white;
-    color: $lightGrey;
+    background-color: $darkGrey;
+    color: $white;
     cursor: auto;
 }
 

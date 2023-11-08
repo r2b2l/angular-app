@@ -12,6 +12,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -31,6 +32,8 @@ import { ErrorInterceptor } from './services/error-interceptor.service';
 import { booksReducer } from './state/books.reducer';
 import { collectionReducer } from './state/collection.reducer';
 import { LoginComponent } from './login/login.component';
+import { AuthInterceptor } from './services/auth-interceptor.service';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +42,8 @@ import { LoginComponent } from './login/login.component';
     WeiConvertPipe,
     ClubComponent,
     ErrorComponentComponent,
-    LoginComponent
+    LoginComponent,
+    ResetPasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -59,6 +63,7 @@ import { LoginComponent } from './login/login.component';
     MatSelectModule,
     MatSnackBarModule,
     MatIconModule,
+    MatSlideToggleModule,
     HighlightModule,
     StoreModule.forRoot({ apiErrors: apiErrorsReducer, books: booksReducer, collection: collectionReducer }),
     AngularCheatSheetComponent,
@@ -82,6 +87,11 @@ import { LoginComponent } from './login/login.component';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ErrorInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
       multi: true
     },
     {

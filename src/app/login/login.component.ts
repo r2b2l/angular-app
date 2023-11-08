@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { User } from '../models/user';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { passwordValidator } from '../validators/password.validator';
 import { AuthService } from '../services/auth-service.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -22,18 +21,17 @@ export class LoginComponent {
   ]);
   passwordFC: FormControl = new FormControl(this.user.password, [
     Validators.required,
-    passwordValidator()
+    // passwordValidator()
   ])
 
-  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router,
-    private route: ActivatedRoute) {
+  constructor(private formBuilder: FormBuilder, private authService: AuthService, private route: ActivatedRoute) {
     this.loginForm = this.formBuilder.group({
       mail: this.mailFC,
       password: this.passwordFC
     });
     this.route.queryParams.subscribe(params => {
       this.redirectRoute = params['redirectAfterLogin'];
-      console.log('redirect to: ', this.redirectRoute);
+      console.log('After login, redirect to: ', this.redirectRoute);
     });
   }
 
@@ -41,11 +39,7 @@ export class LoginComponent {
    * Submit the form and redirect to caller
    */
   onSubmit() {
-    this.authService.login();
-    if (this.redirectRoute !== '') {
-      this.router.navigateByUrl(this.redirectRoute);
-    }
-    this.router.navigateByUrl('/sorare/my-club');
+    this.authService.login(this.user, this.redirectRoute);
   }
 
   encryptPassword() {

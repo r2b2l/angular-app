@@ -13,7 +13,8 @@ const routes: Routes = [
   { path: 'sorare/club/:slug', component: ClubComponent, canActivate: [AuthGuard] },
   { path: 'angular-cheat-sheet', component: AngularCheatSheetComponent, canActivate: [AuthGuard] },
   { path: 'learning', loadChildren: () => import('./learning/learning.module').then(m => m.LearningModule), canActivateChild: [AuthGuard]},
-  { path: '', component: MyClubComponent, pathMatch: 'full' }
+  { path: '', component: MyClubComponent, pathMatch: 'full' },
+  { path: '**', component: MyClubComponent }
 ];
 
 @NgModule({
