@@ -32,7 +32,7 @@ body,
 input[type="text"],
 button {
     color: $black;
-    font-family: Cambria, Georgia, serif;
+    // font-family: Cambria, Georgia, serif;
 }
 
 nav {
@@ -104,6 +104,24 @@ a.no-decoration {
 /* Force mat icons to use its own font family */
 mat-icon {
     font-family: 'Material Icons';
+}
+
+/**
+* Mat Snack bar
+*/
+.mat-mdc-simple-snack-bar {
+    button {
+        margin: 0;
+    }
+}
+
+/**
+* Mat Progress Spinner
+*/
+.mat-mdc-progress-spinner {
+    svg.mdc-circular-progress__indeterminate-circle-graphic {
+        stroke: $white !important;
+    }
 }
 
 /**

@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from '../models/user';
 import { Router } from '@angular/router';
-import { Observable, of } from 'rxjs';
+import { Observable, delay, of } from 'rxjs';
 
 interface ApiLoginResponse {
   isSuccess: boolean;
@@ -41,7 +41,7 @@ export class AuthService {
    * @returns 
    */
   resetPassword(user: User, envDev: boolean): Observable<any> {
-    return of({ isSuccess: true });
+    // return of({ isSuccess: true }).pipe(delay(2000));
     return this.http.post<ApiLoginResponse>(this.apiUrl + '/resetPassword', {
       mail: user.mail,
       password: user.password,

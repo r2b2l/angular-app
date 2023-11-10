@@ -13,6 +13,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -64,6 +65,7 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
     MatSnackBarModule,
     MatIconModule,
     MatSlideToggleModule,
+    MatProgressSpinnerModule,
     HighlightModule,
     StoreModule.forRoot({ apiErrors: apiErrorsReducer, books: booksReducer, collection: collectionReducer }),
     AngularCheatSheetComponent,

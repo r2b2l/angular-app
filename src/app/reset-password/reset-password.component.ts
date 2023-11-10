@@ -4,6 +4,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { passwordValidator } from '../validators/password.validator';
 import { AuthService } from '../services/auth-service.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { take } from 'rxjs';
 
 @Component({
   selector: 'app-reset-password',
@@ -13,14 +14,15 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class ResetPasswordComponent {
   @Input() mail: string = '';
   user: User = new User('', '', '');
-  hidePassword: boolean = true;
-  hideForm: boolean = true;
-  slideToggle: boolean = false;
+  isPasswordHidden: boolean = true;
+  isFormHidden: boolean = true;
+  isSlideToggleActivated: boolean = false;
+  isFormSubmitted: boolean = false;
   loginForm: FormGroup;
 
   passwordFC: FormControl = new FormControl(this.user.password, [
     Validators.required,
-    // passwordValidator()
+    passwordValidator()
   ]);
 
   constructor(private formBuilder: FormBuilder, private authService: AuthService, private _snackBar: MatSnackBar) {
@@ -30,13 +32,24 @@ export class ResetPasswordComponent {
   }
 
   onSubmit() {
-    this.authService.resetPassword(this.user, this.slideToggle).subscribe(data => {
-      // display success to show user he can continue
-      console.log(data);
-      this._snackBar.open('Mot de passe modifié avec succès.', 'Fermer', {
-        duration: 3000
-      });
-    });
+    if (!this.isFormSubmitted) {
+      this.isFormSubmitted = true;
+      this.user.mail = this.mail;
+      this.authService.resetPassword(this.user, this.isSlideToggleActivated)
+      .pipe(take(1)) // Subscribe to only one request
+        .subscribe({
+          next: data => {
+            this._snackBar.open('Mot de passe modifié avec succès.', 'Fermer', {
+              duration: 3000
+            });
+            this.isFormSubmitted = false;
+            this.isFormHidden = true;
+          },
+          error: error => {
+            this.isFormSubmitted = false;
+          }
+        });
+    }
   }
 
   encryptPassword() {
